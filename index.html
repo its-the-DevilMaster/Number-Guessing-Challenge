@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number Guessing Challenge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-container">
+    <!-- 1. Start Screen -->
+    <section id="start-screen" class="card active">
+      <h1>Number Guessing Challenge</h1>
+      <p class="subtitle">
+        Can you crack the secret number before running out of attempts?
+      </p>
+
+      <div class="rules-box">
+        <h2>How to Play</h2>
+        <ul>
+          <li>Choose a difficulty level to set the number range and attempts.</li>
+          <li>Enter a valid number inside the range and click <strong>Submit Guess</strong>.</li>
+          <li>Use the <strong>Too High</strong> or <strong>Too Low</strong> hints to narrow it down.</li>
+          <li>Fewer attempts used means a higher score!</li>
+        </ul>
+      </div>
+
+      <div class="difficulty-group">
+        <label for="difficulty-select">Select Difficulty:</label>
+        <select id="difficulty-select">
+          <option value="easy">Easy (1–50 • 10 Attempts)</option>
+          <option value="medium" selected>Medium (1–100 • 7 Attempts)</option>
+          <option value="hard">Hard (1–200 • 5 Attempts)</option>
+        </select>
+      </div>
+
+      <button id="start-btn" class="btn primary-btn">Start Game</button>
+    </section>
+
+    <!-- 2. Game Screen -->
+    <section id="game-screen" class="card">
+      <div class="top-bar">
+        <span id="difficulty-badge" class="badge">Medium</span>
+        <span id="best-score-display" class="best-score">Best Score: 0</span>
+      </div>
+
+      <h1>Number Guessing Challenge</h1>
+      <p id="range-info" class="range-info">Guess a number between <strong>1</strong> and <strong>100</strong>.</p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span class="stat-label">Attempts Left</span>
+          <span id="attempts-left" class="stat-value">7</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Attempts Used</span>
+          <span id="attempts-used" class="stat-value">0</span>
+        </div>
+      </div>
+
+      <form id="guess-form" class="guess-form">
+        <label for="guess-input" class="sr-only">Enter your guess</label>
+        <input
+          type="number"
+          id="guess-input"
+          placeholder="Enter your guess..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="submit-btn" class="btn primary-btn">Submit Guess</button>
+      </form>
+
+      <p id="feedback-msg" class="feedback neutral" aria-live="polite">
+        Make your first guess to get a hint!
+      </p>
+
+      <div id="history-container" class="history-box">
+        <h3>Previous Guesses</h3>
+        <ul id="guess-history" class="guess-history"></ul>
+      </div>
+    </section>
+
+    <!-- 3. Result Screen -->
+    <section id="result-screen" class="card">
+      <div id="result-banner" class="result-banner">
+        <h1 id="result-title">You Won!</h1>
+        <p id="result-subtitle">Great deduction skills!</p>
+      </div>
+
+      <div class="result-details">
+        <p><strong>Secret Number:</strong> <span id="secret-number-reveal">-</span></p>
+        <p><strong>Attempts Used:</strong> <span id="final-attempts-used">0</span> / <span id="final-max-attempts">0</span></p>
+        <p><strong>Final Score:</strong> <span id="final-score">0</span></p>
+        <p><strong>Session Best Score:</strong> <span id="result-best-score">0</span></p>
+      </div>
+
+      <div class="result-actions">
+        <button id="play-again-btn" class="btn primary-btn">Play Again</button>
+        <button id="change-diff-btn" class="btn secondary-btn">Change Difficulty</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
